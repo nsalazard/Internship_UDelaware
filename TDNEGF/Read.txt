@@ -1,0 +1,3 @@
+In a linux terminal: 
+chmod +x run_padel.sh
+./run_padel.sh
