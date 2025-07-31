@@ -9,11 +9,12 @@ end
 
 ### Global parameters 
 const n = parse(Int, ARGS[1])
-t_end0= parse(Float64, ARGS[2])
+t_end= parse(Float64, ARGS[2])
 # Fixed parameters
-const t_step0= 0.1
+const t_step= 0.1
 const period = 0
 const ω = 0.01
+const t_0 = 0    ### time to start step and end
 ViasV = 0.1
 
 const n_lorentz = 31                     ### number of  lorentzians 
@@ -29,7 +30,6 @@ const theta_2, phi_2 = 12.9, 0.0         ### Angles of sub lattice 2
 const period = 0                         ### Period of precession 
 const N_rash = 0                         ### number of magnetic moment with rashba from 0 to Nrash 
 const Temp, N_poles = 300., 30           ### Temp, Npoles of the fermi function 
-const t_0, t_step, t_end = 0,0.1,100      ### time to start step and end
 ##light flag 
 const J_sd = 0.0 #0.1 
 const J_qsl = 0.0#0.1                        ### jsd_to_llg from classical spin to H_el
