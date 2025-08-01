@@ -15,7 +15,7 @@ const t_step= 0.1
 const period = 0
 const ω = 0.01
 const t_0 = 0    ### time to start step and end
-ViasV = 0.1
+BiasV = 0.05
 
 const n_lorentz = 31                     ### number of  lorentzians 
 const n_channels = 2                     ### number of channels(2 for full spin)
@@ -1092,7 +1092,7 @@ function iter_evol(;t_0=t_0, t_step=t_step, t_end=t_end, llg_params = llg_parame
     
     #configure!(cspin_orientation,llg_params,vm_a1x,pr_spins,period)    ### set the initial values for pr_spins and vm_a1x
     H_ab = create_H(vm_a1x)                                     ### Initiallize the matrix with the density of the configuration
-    delta_α = [0. , ViasV]
+    delta_α = [0. , BiasV]
     ### Initial evaluation of spin density 
     params_0 = Dict( "sden" => true, "scurr"=>false
                     , "curr"=>false, "rho"=>false )
@@ -1108,7 +1108,7 @@ function iter_evol(;t_0=t_0, t_step=t_step, t_end=t_end, llg_params = llg_parame
     if read_bias_file #& (i <= ti_bias)
         delta_α::Vector{Float64} .= data_bias[1,:]
     else
-        delta_α .= [0. , ViasV]
+        delta_α .= [0. , BiasV]
     end
     ### Seting ODE for electrons-bath
     prob = ODEProblem(eom!,rkvec, (0.0,t_end), [H_ab,delta_α] )         ### defines the problem for the differentia equation 
@@ -1173,9 +1173,9 @@ function iter_evol(;t_0=t_0, t_step=t_step, t_end=t_end, llg_params = llg_parame
         if read_bias_file# & (i <= ti_bias)
             delta_α::Vector{Float64} .= data_bias[i+1,:]
         #data_bias[1,:]
-        delta_α .= [0. , ViasV]
+        delta_α .= [0. , BiasV]
         #elseif 200 < t < 1001
-        #    delta_α .= [0. , ViasV]
+        #    delta_α .= [0. , BiasV]
         #else
         #    delta_α .= [0. , 0.]
         end

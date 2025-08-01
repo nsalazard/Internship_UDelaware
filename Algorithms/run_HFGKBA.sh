@@ -1,14 +1,14 @@
 set -uo pipefail
 
 # Directory for timing outputs
-OUTPUT_DIR="./timings"
+OUTPUT_DIR="./timingsGKBA"
 mkdir -p "$OUTPUT_DIR"
 
 # Logarithmically spaced t_end values between 10 and 1000
-t_end_values=(10 31 100 316 1000 3162 10000)
+t_end_values=(10 31 100 316 1000 3162)
 
 # Path to your Julia script (adjust if located elsewhere)
-script_path="./Padel.jl"
+script_path="./HFGKBA_krep.jl"
 
 for t_end in "${t_end_values[@]}"; do
     echo "Running simulation with n=10, t_end=$t_end..."

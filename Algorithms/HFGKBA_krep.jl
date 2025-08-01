@@ -8,6 +8,29 @@ end
 const size = parse(Int, ARGS[1])
 t_end= parse(Float64, ARGS[2])
 
+# Dynamic nk assignment based on t_end for optimal efficiency
+function get_optimal_nk(t_end::Float64)
+    if t_end <= 50
+        return 200      # 0 - 50
+    elseif t_end <= 100
+        return 300      # 51 - 100
+    elseif t_end <= 300
+        return 400      # 101 - 300
+    elseif t_end <= 500
+        return 600      # 301 - 500
+    elseif t_end <= 800
+        return 800      # 501 - 800
+    elseif t_end <= 1000
+        return 1200     # 801 - 1000
+    elseif t_end <= 1500
+        return 1600     # 1001 - 1500
+    elseif t_end <= 2500
+        return 2000     # 1501 - 2500
+    else
+        return 2500     # Very long simulations
+    end
+end
+
 # Initial parameters
 t_0 = 0.0
 t_step = 0.1
@@ -33,7 +56,7 @@ ny = 1
 nx = size
 ns = nx*ny
 nσ =  2 # size?
-nk = 400
+nk = get_optimal_nk(t_end)  # Dynamic nk based on simulation length
 nα =  2 # size?
 t = 1
 #tc = 1
@@ -292,7 +315,8 @@ function init_params()
     ns = nx*ny
     nσ = 2
     nα = 2
-    nk = 400
+    nk = get_optimal_nk(t_end)  # Use the same dynamic nk assignment
+    println("Using nk = $nk for t_end = $t_end")
     γ = 1
     γso = 0.0
     γc = 1.0#1.0#1.0#1.0
@@ -320,9 +344,10 @@ function init_params()
     
     #### Electron variables 
     Gleαs_kαi = zeros(ComplexF64, dims_Gleαs_kαi  )
-    Gls_ij = zeros(ComplexF64, dims_Gls_ij );
+    #Gls_ij = zeros(ComplexF64, dims_Gls_ij );
     #Gls_ij[2:2:end,2:2:end] .= 1.0
-    Gls_ij .= 1im*Diagonal([1.0,1.0,1.0,1.0])*0.0/2#0.1/2
+    #Gls_ij .= 1im*Diagonal([1.0,1.0,1.0,1.0])*0.0/2#0.1/2
+    Gls_ij = 1im * Diagonal(ones(nx*2)) * (0.0/2)
 
 
     gl_kα[1:2:end,1] .= 1im*fermi.((ϵ_k.+μ_α[1])*β)#/nk
@@ -458,7 +483,7 @@ function main()
     elapsed_time = @elapsed begin
         for (i,t) in enumerate(t_0:t_step:t_end-t_step)
             tt = round((i)*t_step,digits=2)
-            println("time: ", tt  )
+            #println("time: ", tt  )
             ### asure that time_step is printed
             flush(stdout)         
             ### evolve one time step 

@@ -1,4 +1,10 @@
-In a linux terminal: 
+In a linux cluster: 
 chmod +x run_padel.sh
-./run_padel.sh
 nohup ./run_padel.sh &
+
+Regular way:
+./run_padel.sh
+
+Erase all the changes in a repository:
+git reset --hard
+git clean -fd
