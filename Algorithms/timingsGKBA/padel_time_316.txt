@@ -1,0 +1,6 @@
+Using nk = 600 for t_end = 316.0
+Initial condition
+Starting time evolution
+Total time of simulation: 15616.606608073 s
+15620.744784 seconds (458.66 G allocations: 14.277 TiB, 15.50% gc time, 0.09% compilation time)
+  1.522778 seconds (2.42 M allocations: 113.133 MiB, 2.45% gc time, 95.09% compilation time)

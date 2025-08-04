@@ -1,0 +1,3 @@
+Number of threads used in operations is : 1
+Total time of simulation: 8585.167767667 s
+8601.083249 seconds (195.66 G allocations: 6.298 TiB, 10.15% gc time, 0.50% compilation time)
