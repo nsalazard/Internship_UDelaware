@@ -13,7 +13,7 @@ n_size=4  # Adjust n_size as needed
 
 for t_end in "${t_end_values[@]}"; do
     echo "Running simulation with n=$n_size, t_end=$t_end..."
-    output_file="$OUTPUT_DIR/padel_time_${t_end}.txt"
+    output_file="$OUTPUT_DIR/padel_time_${n_size}_${t_end}.txt"
 
     # Run Julia and capture both stdout and stderr (timing info)
     # Use || true to prevent early exit if Julia returns non-zero
