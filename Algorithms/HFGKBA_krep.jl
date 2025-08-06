@@ -598,4 +598,4 @@ end
 
 # -----------------------------------------------------------------
 @time main()
-@time plot_results(name, size, t_step)
+#@time plot_results(name, size, t_step)
