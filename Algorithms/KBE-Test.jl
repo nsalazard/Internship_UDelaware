@@ -291,16 +291,27 @@ atol = 1e-8#1e-7#
 rtol = 1e-6#1e-4#
 
 # Call the solver
-elapsed_time = @elapsed begin
-sol = kbsolve!(
-    (x...) -> fv!(model, data, x...),
-    (x...) -> fd!(model, data, x...),
-    [data.GL, data.GG],
-    (0.0, tmax);
-    callback = (x...) -> self_Lead!(model, data, x...),
-    atol = atol,
-    rtol = rtol,
-    stop = x -> false
-)
-end
-println("Total time of simulation: ", elapsed_time, " s" )
+# elapsed_time = @elapsed begin
+# sol = kbsolve!(
+#     (x...) -> fv!(model, data, x...),
+#     (x...) -> fd!(model, data, x...),
+#     [data.GL, data.GG],
+#     (0.0, tmax);
+#     callback = (x...) -> self_Lead!(model, data, x...),
+#     atol = atol,
+#     rtol = rtol,
+#     stop = x -> false
+# )
+# end
+
+@time kbsolve!(
+     (x...) -> fv!(model, data, x...),
+     (x...) -> fd!(model, data, x...),
+     [data.GL, data.GG],
+     (0.0, tmax);
+     callback = (x...) -> self_Lead!(model, data, x...),
+     atol = atol,
+     rtol = rtol,
+     stop = x -> false
+ )
+#println("Total time of simulation: ", elapsed_time, " s" )
