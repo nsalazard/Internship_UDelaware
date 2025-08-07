@@ -1,1 +1,1 @@
-Total time of simulation: 7937.93470912 s
+7539.063185 seconds (24.46 G allocations: 12.660 TiB, 18.61% gc time, 0.10% compilation time)

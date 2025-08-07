@@ -1,3 +1,24 @@
 Using nk = 2500 for t_end = 3162.0
 Initial condition
 Starting time evolution
+ERROR: LoadError: DimensionMismatch: tried to assign 8578-element array to 8579×1 destination
+Stacktrace:
+ [1] throw_setindex_mismatch(X::Vector{Float64}, I::Tuple{Int64, Int64})
+   @ Base ./indices.jl:208
+ [2] setindex_shape_check
+   @ ./indices.jl:263 [inlined]
+ [3] _unsafe_setindex!(::IndexLinear, ::Matrix{Float64}, ::Vector{Float64}, ::Base.Slice{Base.OneTo{Int64}}, ::Int64)
+   @ Base ./multidimensional.jl:976
+ [4] _setindex!
+   @ ./multidimensional.jl:967 [inlined]
+ [5] setindex!
+   @ ./abstractarray.jl:1413 [inlined]
+ [6] plot_results(name::String, system_size::Int64, time_step::Float64)
+   @ Main ~/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:584
+ [7] macro expansion
+   @ ./timing.jl:581 [inlined]
+ [8] top-level scope
+   @ ~/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:315
+in expression starting at /home/nssd/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:601
+Total time of simulation: 102118.259856672 s
+102122.299768 seconds (3.08 T allocations: 96.162 TiB, 16.84% gc time, 0.01% compilation time)

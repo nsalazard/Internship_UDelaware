@@ -1,0 +1,1 @@
+Total time of simulation: 504328.404156362 s

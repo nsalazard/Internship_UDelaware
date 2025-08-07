@@ -1,37 +1,5 @@
 Using nk = 300 for t_end = 100.0
 Initial condition
 Starting time evolution
-ERROR: LoadError: MethodError: Cannot `convert` an object of type SubString{String} to an object of type Float64
-The function `convert` exists, but no method is defined for this combination of argument types.
-
-Closest candidates are:
-  convert(::Type{T}, !Matched::VectorizationBase.AbstractSIMD) where T<:Union{Bool, Float16, Float32, Float64, Int16, Int32, Int64, Int8, UInt16, UInt32, UInt64, UInt8, SIMDTypes.Bit}
-   @ VectorizationBase ~/.julia/packages/VectorizationBase/wHnQd/src/base_defs.jl:201
-  convert(::Type{T}, !Matched::T) where T
-   @ Base Base.jl:126
-  convert(::Type{T}, !Matched::AbstractChar) where T<:Number
-   @ Base char.jl:185
-  ...
-
-Stacktrace:
- [1] setindex!
-   @ ./array.jl:994 [inlined]
- [2] macro expansion
-   @ ./multidimensional.jl:981 [inlined]
- [3] macro expansion
-   @ ./cartesian.jl:64 [inlined]
- [4] _unsafe_setindex!(::IndexLinear, ::Matrix{Float64}, ::Vector{Any}, ::Int64, ::Base.Slice{Base.OneTo{Int64}})
-   @ Base ./multidimensional.jl:979
- [5] _setindex!
-   @ ./multidimensional.jl:967 [inlined]
- [6] setindex!
-   @ ./abstractarray.jl:1413 [inlined]
- [7] plot_results(name::String, system_size::Int64, time_step::Float64)
-   @ Main ~/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:566
- [8] macro expansion
-   @ ./timing.jl:581 [inlined]
- [9] top-level scope
-   @ ~/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:315
-in expression starting at /home/nssd/Internship_UDelaware/Algorithms/HFGKBA_krep.jl:601
-Total time of simulation: 843.716829021 s
-847.959051 seconds (26.21 G allocations: 837.240 GiB, 14.41% gc time, 1.64% compilation time)
+Total time of simulation: 838.581720487 s
+843.682195 seconds (26.21 G allocations: 837.240 GiB, 14.48% gc time, 2.00% compilation time)
