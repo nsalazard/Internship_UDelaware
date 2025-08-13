@@ -1,9 +1,9 @@
 Using nk = 2500 for t_end = 3162.0
 Initial condition
 Starting time evolution
-ERROR: LoadError: DimensionMismatch: tried to assign 8578-element array to 8579×1 destination
-Stacktrace:
- [1] throw_setindex_mismatch(X::Vector{Float64}, I::Tuple{Int64, Int64})
+Total time of simulation: 105621.794303038 s
+105626.643975 seconds (3.08 T allocations: 96.162 TiB, 17.25% gc time, 0.02% compilation time)
+ector{Float64}, I::Tuple{Int64, Int64})
    @ Base ./indices.jl:208
  [2] setindex_shape_check
    @ ./indices.jl:263 [inlined]
